@@ -25,3 +25,4 @@ fprintf('\nDone.\n');
 fprintf('Group waveform image:\n%s\n\n', outputs.imageFile);
 fprintf('Group time statistics CSV:\n%s\n\n', outputs.csvFile);
 fprintf('Group waveform MAT:\n%s\n\n', outputs.matFile);
+fprintf('Peak detection stats CSV:\n%s\n\n', outputs.peakStatsCsvFile);

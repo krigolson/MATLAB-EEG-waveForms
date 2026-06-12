@@ -149,6 +149,11 @@ channels.
 - `*_group_waveform.mat`
 - `*_peak_detection.png`
 - `*_peak_detection.csv`
+- `*_peak_detection_stats.csv`
+
+The peak stats CSV includes the mean, 95 percent confidence interval,
+Bayesian interval, one-sample t-test against zero, and Cohen's d for mean
+amplitude, peak amplitude, and peak latency.
 
 ## Examples
 

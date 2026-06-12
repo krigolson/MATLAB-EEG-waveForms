@@ -103,6 +103,7 @@ csvFile = fullfile(outputDir, [outputPrefix '_group_waveform.csv']);
 matFile = fullfile(outputDir, [outputPrefix '_group_waveform.mat']);
 peakImageFile = fullfile(outputDir, [outputPrefix '_peak_detection.png']);
 peakCsvFile = fullfile(outputDir, [outputPrefix '_peak_detection.csv']);
+peakStatsCsvFile = fullfile(outputDir, [outputPrefix '_peak_detection_stats.csv']);
 
 fig = figure('Color', 'w', 'Position', [100 100 1100 950]);
 colors = [0.0 0.28 0.55; 0.78 0.30 0.10];
@@ -168,6 +169,9 @@ if logical(opts.MakePeakPlot)
     end
 end
 wf_write_peak_csv(peakCsvFile, peak);
+peakStats = wf_write_peak_stats_csv(peakStatsCsvFile, peak, ...
+    'BayesianDraws', opts.BayesianDraws, ...
+    'BayesianSeed', opts.BayesianSeed);
 
 write_group_csv(csvFile, timeVector, conditionMeanWaveforms, differenceMeanWaveform, ...
     differenceCILower, differenceCIUpper, bayesianDifferenceCILower, ...
@@ -203,7 +207,7 @@ save(matFile, 'conditionSubjectWaveforms', 'conditionMeanWaveforms', ...
     'differenceSubjectWaveforms', 'differenceMeanWaveform', 'differenceCI', ...
     'differenceCILower', 'differenceCIUpper', 'bayesianDifferenceCI', ...
     'bayesianDifferenceCILower', 'bayesianDifferenceCIUpper', ...
-    'bayesianDifferenceDraws', 'peak', 'timeVector', 'selectedLabels', ...
+    'bayesianDifferenceDraws', 'peak', 'peakStats', 'timeVector', 'selectedLabels', ...
     'channelIdx', 'metadata', '-v7');
 
 outputs = struct();
@@ -212,6 +216,7 @@ outputs.csvFile = csvFile;
 outputs.matFile = matFile;
 outputs.peakImageFile = peakImageFile;
 outputs.peakCsvFile = peakCsvFile;
+outputs.peakStatsCsvFile = peakStatsCsvFile;
 outputs.conditionSubjectWaveforms = conditionSubjectWaveforms;
 outputs.conditionMeanWaveforms = conditionMeanWaveforms;
 outputs.differenceSubjectWaveforms = differenceSubjectWaveforms;
@@ -224,6 +229,7 @@ outputs.bayesianDifferenceCILower = bayesianDifferenceCILower;
 outputs.bayesianDifferenceCIUpper = bayesianDifferenceCIUpper;
 outputs.bayesianDifferenceDraws = bayesianDifferenceDraws;
 outputs.peak = peak;
+outputs.peakStats = peakStats;
 outputs.timeVector = timeVector;
 outputs.channelIdx = channelIdx;
 outputs.channelLabels = selectedLabels;
@@ -234,6 +240,7 @@ fprintf('Group waveform CSV saved: %s\n', csvFile);
 fprintf('Group waveform MAT saved: %s\n', matFile);
 fprintf('Group peak detection image saved: %s\n', peakImageFile);
 fprintf('Group peak detection CSV saved: %s\n', peakCsvFile);
+fprintf('Group peak detection stats CSV saved: %s\n', peakStatsCsvFile);
 end
 
 function [conditionSubjectWaveforms, differenceSubjectWaveforms] = select_group_waveforms(raw, conditionPair, channelIdx)

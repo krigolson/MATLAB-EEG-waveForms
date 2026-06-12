@@ -5,6 +5,7 @@
 % Main functions
 %   doWaveForms       - Subject-level conditional and difference waveforms.
 %   doGroupWaveForms  - Group-level waveforms, confidence bands, and peak detection.
+%   wf_write_peak_stats_csv - Write group statistics for peak measures.
 %
 % Example scripts
 %   exampleSubjectWaveform - Example subject-level waveform call.
