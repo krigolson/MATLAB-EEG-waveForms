@@ -10,7 +10,7 @@ The expected group data shape is:
 channels x time x conditions x subjects
 ```
 
-The repository includes sample REWP grand ERP data:
+The repository includes sample grand ERP data:
 
 ```text
 sampleGrandERP.mat
@@ -55,7 +55,7 @@ outputs = doWaveForms('sampleGrandERP.mat', ...
     'Channels', {'FCz'}, ...
     'StartTime', -200, ...
     'SamplingRate', 500, ...
-    'OutputPrefix', 'rewp_sub01_cond01minus02_FCz');
+    'OutputPrefix', 'sample_sub01_cond01minus02_FCz');
 ```
 
 ## Group Waveforms
@@ -74,7 +74,7 @@ outputs = doGroupWaveForms('sampleGrandERP.mat', ...
     'Channels', {'FCz'}, ...
     'StartTime', -200, ...
     'SamplingRate', 500, ...
-    'OutputPrefix', 'rewp_group_cond01minus02_FCz');
+    'OutputPrefix', 'sample_group_cond01minus02_FCz');
 ```
 
 ## Peak Detection

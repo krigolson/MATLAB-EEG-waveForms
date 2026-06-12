@@ -1,5 +1,5 @@
 %% exampleSubjectWaveform.m
-% Plot one subject-level ERP waveform using the shared REWP data.
+% Plot one subject-level ERP waveform using the shared sample data.
 
 clear;
 clc;
@@ -20,7 +20,7 @@ outputs = doWaveForms(dataFile, ...
     'StartTime', -200, ...
     'SamplingRate', 500, ...
     'OutputDir', 'outputs', ...
-    'OutputPrefix', 'rewp_sub01_cond01minus02_FCz');
+    'OutputPrefix', 'sample_sub01_cond01minus02_FCz');
 
 fprintf('\nDone.\n');
 fprintf('Waveform image:\n%s\n\n', outputs.imageFile);
