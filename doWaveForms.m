@@ -12,13 +12,13 @@ function outputs = doWaveForms(dataInput, varargin)
 %   channels x time x conditions x subjects.
 
 if nargin < 1 || isempty(dataInput)
-    dataInput = fullfile('..', 'sLoretta', 'rewpGrandERP.mat');
+    dataInput = 'sampleGrandERP.mat';
 end
 
 parser = inputParser;
 parser.FunctionName = mfilename;
-addParameter(parser, 'DataVariable', 'grandERP', @(x) ischar(x) || isstring(x));
-addParameter(parser, 'ChanlocsFile', fullfile('..', 'sLoretta', 'matlocs.mat'), @(x) ischar(x) || isstring(x));
+addParameter(parser, 'DataVariable', 'sampleGrandERP', @(x) ischar(x) || isstring(x));
+addParameter(parser, 'ChanlocsFile', 'sampleGrandERP.mat', @(x) ischar(x) || isstring(x));
 addParameter(parser, 'OutputDir', 'outputs', @(x) ischar(x) || isstring(x));
 addParameter(parser, 'OutputPrefix', '', @(x) ischar(x) || isstring(x));
 addParameter(parser, 'SubjectIdx', 1, @(x) isnumeric(x) && isscalar(x) && x >= 1);
