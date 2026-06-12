@@ -1,0 +1,5 @@
+outputs/
+*.asv
+*.fig
+*.m~
+.DS_Store
